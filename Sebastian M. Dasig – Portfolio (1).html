@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sebastian M. Dasig – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=JetBrains+Mono:wght@400;600&family=Instrument+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#effaf1; --surface:#ffffff; --ink:#0a2e1a; --muted:#47705a;
+  --green:#12a150; --green-2:#0b6e36; --glow:#2ee27a; --line:#c4e6cf;
+  --on-green:#ffffff;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#06150d; --surface:#0d2518; --ink:#e4fbec; --muted:#8fbfa2;
+    --green:#2ee27a; --green-2:#17b35c; --glow:#2ee27a; --line:#1b4a30;
+    --on-green:#04140a; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#06150d; --surface:#0d2518; --ink:#e4fbec; --muted:#8fbfa2;
+  --green:#2ee27a; --green-2:#17b35c; --glow:#2ee27a; --line:#1b4a30;
+  --on-green:#04140a; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:1.05rem;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.05;margin:0}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.4rem}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;gap:1rem}
+nav b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.15rem}
+nav ul{display:flex;gap:1.3rem;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem}
+nav a:hover{color:var(--green)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:99px;width:38px;height:38px;cursor:pointer;font-size:1rem}
+@media(max-width:620px){nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;padding:4.5rem 0 5rem}
+.hero::before{content:"";position:absolute;inset:-10% -20% auto auto;width:620px;height:620px;background:radial-gradient(circle,color-mix(in srgb,var(--glow) 32%,transparent),transparent 65%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.photo-col{order:-1}}
+.hello{display:inline-flex;align-items:center;gap:.6rem;border:1px solid var(--line);background:var(--surface);padding:.35rem .9rem;border-radius:99px;font-size:.85rem;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--glow);box-shadow:0 0 0 0 var(--glow);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-size:clamp(2.9rem,8vw,5.6rem);font-weight:800;letter-spacing:-.03em;margin:1.2rem 0 1rem}
+h1 span{display:block;color:var(--green)}
+.lead{font-size:1.2rem;color:var(--muted);max-width:34ch;margin:0 0 1.8rem}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:12px;text-decoration:none;font-weight:500;border:2px solid var(--green);transition:transform .15s}
+.btn.main{background:var(--green);color:var(--on-green)}
+.btn:hover{transform:translateY(-2px)}
+.typed{margin-top:2rem;font-size:.95rem;color:var(--green-2)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .typed{color:var(--green)}}
+:root[data-theme="dark"] .typed{color:var(--green)}
+.caret{display:inline-block;width:.55ch;height:1.1em;background:var(--green);vertical-align:-.2em;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* photo */
+.photo-col{display:flex;justify-content:center}
+.frame{position:relative;width:min(340px,80vw);aspect-ratio:1;cursor:pointer;border:0;background:none;padding:0}
+.frame::before{content:"";position:absolute;inset:-14px;border:2px dashed var(--green);border-radius:38% 62% 55% 45%/50% 40% 60% 50%;animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.blob{position:absolute;inset:0;border-radius:38% 62% 55% 45%/50% 40% 60% 50%;overflow:hidden;background:linear-gradient(145deg,var(--green),var(--green-2));box-shadow:0 30px 70px -20px color-mix(in srgb,var(--green) 70%,transparent)}
+.blob img{width:100%;height:100%;object-fit:cover;display:none}
+.blob.has img{display:block}
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:var(--on-green);text-align:center;font-weight:500}
+.ph svg{width:56px;height:56px}
+.blob.has .ph{display:none}
+.change{position:absolute;right:6%;bottom:6%;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:.35rem .85rem;font-size:.8rem;display:none}
+.frame:hover .change,.frame:focus-visible .change{display:block}
+.blob.has ~ .change{display:block;opacity:.0}
+.frame:hover .blob.has ~ .change{opacity:1}
+
+/* sections */
+section{padding:4.5rem 0}
+h2{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.02em;margin-bottom:2rem}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+@media(max-width:820px){.about{grid-template-columns:1fr}}
+.about p{color:var(--muted);margin:0 0 1rem}
+.sql{background:#07180f;color:#d8f7e3;border-radius:16px;padding:1.3rem 1.4rem;font-size:.88rem;line-height:1.8;border:1px solid #1b4a30;overflow-x:auto;box-shadow:0 20px 50px -25px rgba(0,0,0,.6)}
+.sql .k{color:#2ee27a}.sql .s{color:#b7f5cc}.sql .c{color:#5f8f73}
+.bar{display:flex;gap:6px;margin-bottom:.9rem}.bar i{width:11px;height:11px;border-radius:50%;background:#1f5a3a}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.2rem}
+.skill b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:1.35rem;margin-bottom:.8rem}
+.meter{height:7px;border-radius:9px;background:var(--line);overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green-2),var(--glow));border-radius:9px;transition:width 1.1s ease}
+.skills.in .meter i{width:var(--w)}
+.note{color:var(--muted);font-size:.85rem;margin-top:1rem}
+
+.project{display:grid;grid-template-columns:1.1fr 1fr;border-radius:24px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+@media(max-width:820px){.project{grid-template-columns:1fr}}
+.pbody{padding:2.2rem}
+.pbody h3{font-size:2.4rem;margin-bottom:.4rem}
+.tag{display:inline-block;font-size:.78rem;padding:.2rem .7rem;border-radius:99px;background:color-mix(in srgb,var(--green) 16%,transparent);color:var(--green-2);margin:0 .4rem .4rem 0}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .tag{color:var(--green)}}
+:root[data-theme="dark"] .tag{color:var(--green)}
+.pbody p{color:var(--muted)}
+.pvis{background:linear-gradient(145deg,var(--green-2),#052412);color:#d8f7e3;padding:2rem;display:flex;flex-direction:column;justify-content:center;gap:1rem;min-height:260px}
+.row{display:flex;align-items:center;gap:.9rem;background:rgba(255,255,255,.08);border-radius:12px;padding:.8rem 1rem;font-size:.9rem}
+.row .v{margin-left:auto;font-weight:600;color:#2ee27a}
+.row .e{font-size:1.4rem}
+
+.roles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1.2rem}
+.role{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.3rem;border-top:4px solid var(--green)}
+.role h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.3rem;margin:0 0 .5rem}
+.role p{margin:0;color:var(--muted);font-size:.97rem}
+.how{margin-top:1.2rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.4rem}
+.how h4{font-family:"Bricolage Grotesque",sans-serif;font-size:1.3rem;margin:0 0 .8rem}
+.how ul{margin:0;padding-left:1.1rem;color:var(--muted)}.how li{margin:.4rem 0}.how b{color:var(--ink)}
+.sem{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.sm{background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--green);border-radius:16px;padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.5rem}
+.sm b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.15rem;line-height:1.2}
+.sm span{color:var(--muted);font-size:.92rem}
+.sm .tag{align-self:flex-start;margin:0}
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.cc{display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.4rem;text-decoration:none;transition:transform .15s,border-color .15s}
+.cc:hover{transform:translateY(-3px);border-color:var(--green)}
+.cc .ic{font-size:1.8rem;width:54px;height:54px;border-radius:14px;background:color-mix(in srgb,var(--green) 16%,transparent);display:grid;place-items:center;flex-shrink:0}
+.cc small{display:block;color:var(--muted)}.cc b{font-family:"Bricolage Grotesque",sans-serif;font-size:1.15rem;overflow-wrap:anywhere}
+footer{padding:3rem 0 4rem;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
+footer h2{margin-bottom:.6rem}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <b>S.M. Dasig</b>
+  <ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#seminars">Seminars</a></li><li><a href="#contact">Contact</a></li></ul>
+  <button id="theme" aria-label="Switch light or dark theme">◐</button>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="hello mono"><i class="dot"></i>Open to opportunities</span>
+    <h1>Sebastian <span>M. Dasig</span></h1>
+    <p class="lead">Database Systems Technology student at NEUST who builds tools that turn raw data into something useful.</p>
+    <div class="btns"><a class="btn main" href="#projects">See my project</a><a class="btn main" href="#contact">Contact me</a><a class="btn" href="#about">About me</a></div>
+    <div class="typed mono">&gt; SELECT skill FROM me WHERE passion = 'data';<br>&gt; <span id="t"></span><i class="caret"></i></div>
+  </div>
+  <div class="photo-col">
+    <button class="frame" id="frame" aria-label="Add or change your photo">
+      <div class="blob" id="blob">
+        <img id="img" alt="Portrait of Sebastian M. Dasig">
+        <div class="ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          <span>Click to add<br>your photo</span>
+        </div>
+      </div>
+      <span class="change">Change photo</span>
+    </button>
+    <input type="file" id="file" accept="image/*" hidden>
+  </div>
+</div></header>
+
+<section id="about"><div class="wrap about">
+  <div>
+    <h2>About me</h2>
+    <p>I’m a student at NEUST, majoring in Database Systems Technology. I like designing clean data structures and building systems that make real work easier.</p>
+    <p>I code in six languages and learn best by shipping real projects, like FlockIQ.</p>
+  </div>
+  <div class="sql mono" aria-label="Profile card written as a database record">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <span class="c">-- profile record</span><br>
+    <span class="k">SELECT</span> * <span class="k">FROM</span> students<br>
+    <span class="k">WHERE</span> name = <span class="s">'Sebastian M. Dasig'</span>;<br><br>
+    school&nbsp;&nbsp;&nbsp;&nbsp;→ <span class="s">NEUST</span><br>
+    major&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ <span class="s">Database Systems Technology</span><br>
+    birthday&nbsp;&nbsp;→ <span class="s">June 27, 2004</span><br>
+    age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ <span class="s" id="age"></span><br>
+    projects&nbsp;&nbsp;→ <span class="s">1</span>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Languages</h2>
+  <div class="skills" id="sk">
+    <div class="skill"><b>C++</b><div class="meter"><i style="--w:70%"></i></div></div>
+    <div class="skill"><b>Java</b><div class="meter"><i style="--w:70%"></i></div></div>
+    <div class="skill"><b>HTML</b><div class="meter"><i style="--w:85%"></i></div></div>
+    <div class="skill"><b>CSS</b><div class="meter"><i style="--w:80%"></i></div></div>
+    <div class="skill"><b>JavaScript</b><div class="meter"><i style="--w:72%"></i></div></div>
+    <div class="skill"><b>Python</b><div class="meter"><i style="--w:78%"></i></div></div>
+  </div>
+  <p class="note">Bars are placeholders. Tell me your real comfort levels and I’ll update them.</p>
+</div></section>
+
+<section id="projects"><div class="wrap">
+  <h2>Projects</h2>
+  <article class="project">
+    <div class="pbody">
+      <h3>FlockIQ</h3>
+      <p><span class="tag mono">Flock monitoring</span><span class="tag mono">Database-driven</span></p>
+      <p>FlockIQ is a flock monitoring system for a poultry farm, built around a batch of chicks from the day they arrive until harvest. It tracks the birds, the feed, the vaccines, the money spent, and the profit or loss. It is meant to replace paper records and show clearly where the money goes and which batches earn.</p>
+    </div>
+    <div class="pvis mono" aria-hidden="true">
+      <div class="row"><span class="e">🐔</span>Flock A<span class="v">healthy</span></div>
+      <div class="row"><span class="e">📈</span>Daily records<span class="v">logged</span></div>
+      <div class="row"><span class="e">🔔</span>Health alerts<span class="v">on</span></div>
+    </div>
+  </article>
+  <div class="roles">
+    <div class="role"><h4>Worker records</h4><p>Submits daily deaths and the feed given, which is deducted from inventory automatically. Once a week, submits a sample weighing to get the average bird weight.</p></div>
+    <div class="role"><h4>Manager verifies and runs</h4><p>Approves or rejects the Worker’s records with a reason. Tracks expenses, schedules the Day 12 and Day 16 vaccines, keeps the vitamin, medicine and feed inventories, and harvests the batch.</p></div>
+    <div class="role"><h4>Owner decides</h4><p>Sets up each incoming batch, sets the market price used to judge profit, manages user accounts, and reads the results in Summary Reports and Harvest History.</p></div>
+  </div>
+  <div class="how">
+    <h4>How the numbers connect</h4>
+    <ul>
+      <li><b>Remaining birds:</b> initial count minus deaths and culls.</li>
+      <li><b>Profit or loss:</b> harvest value at the market price minus total expenses. A gain shows green and a loss shows red.</li>
+      <li><b>Performance:</b> ADG shows how fast the birds gained weight. FCR shows how much feed it took per kilogram gained.</li>
+      <li><b>Best Season of Sales:</b> compares Dry and Wet season profits over the year, so the Owner can see which season earns more.</li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="seminars"><div class="wrap">
+  <h2>Seminars</h2>
+  <div class="sem">
+    <div class="sm"><span class="tag mono">Aug 2026</span><b>Database 101: Data Storage, SQL and Query Optimization</b><span>UpskillTechPH</span></div>
+    <div class="sm"><span class="tag mono">Aug 2026</span><b>AI Tools 101: How to Use Google Gemini Like a Pro</b><span>UpskillTechPH</span></div>
+    <div class="sm"><span class="tag mono">Aug 2026</span><b>Learning Advocate 2026: Emerging IT Innovations</b><span>UpskillTechPH</span></div>
+    <div class="sm"><span class="tag mono">Oct 2026</span><b>Webinar Series 2026: The 3 P’s (Plan, Prepare, Progress)</b><span>Phinma Education</span></div>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Contact me</h2>
+  <div class="contact">
+    <a class="cc" href="mailto:sebastiandasig714@gmail.com"><span class="ic" aria-hidden="true">✉️</span><span><small>Email</small><b>sebastiandasig714@gmail.com</b></span></a>
+    <a class="cc" href="tel:+639702746170"><span class="ic" aria-hidden="true">📞</span><span><small>Phone</small><b>0970 274 6170</b></span></a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <h2>Let’s build something.</h2>
+  <p>Sebastian M. Dasig · NEUST · Database Systems Technology</p>
+</div></footer>
+
+<script>
+// theme toggle
+var root=document.documentElement;
+document.getElementById('theme').onclick=function(){
+  var dark=getComputedStyle(root).colorScheme==='dark';
+  root.setAttribute('data-theme',dark?'light':'dark');
+};
+// age
+(function(){var b=new Date(2004,5,27),n=new Date(),a=n.getFullYear()-b.getFullYear();
+  if(n<new Date(n.getFullYear(),5,27))a--;document.getElementById('age').textContent=a;})();
+// typing
+(function(){var w=['C++','Java','HTML','CSS','JavaScript','Python'],i=0,j=0,del=false,el=document.getElementById('t');
+  function tick(){var s=w[i];j+=del?-1:1;el.textContent=s.slice(0,j);var d=del?50:110;
+    if(!del&&j===s.length){del=true;d=1200}else if(del&&j===0){del=false;i=(i+1)%w.length;d=300}
+    setTimeout(tick,d)}tick();})();
+// skill bars
+new IntersectionObserver(function(e,o){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');o.disconnect()}})},{threshold:.3}).observe(document.getElementById('sk'));
+// photo upload
+var blob=document.getElementById('blob'),img=document.getElementById('img'),file=document.getElementById('file');
+function show(src){img.src=src;blob.classList.add('has')}
+try{var saved=localStorage.getItem('portfolio-photo');if(saved)show(saved)}catch(e){}
+document.getElementById('frame').onclick=function(){file.click()};
+file.onchange=function(){
+  var f=file.files[0];if(!f)return;
+  var r=new FileReader();
+  r.onload=function(){
+    var im=new Image();
+    im.onload=function(){
+      var s=700,sc=Math.min(1,s/Math.max(im.width,im.height)),c=document.createElement('canvas');
+      c.width=im.width*sc;c.height=im.height*sc;c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+      var d=c.toDataURL('image/jpeg',.85);show(d);
+      try{localStorage.setItem('portfolio-photo',d)}catch(e){}
+    };
+    im.src=r.result;
+  };
+  r.readAsDataURL(f);
+};
+</script>
+</body>
+</html>
